@@ -148,7 +148,7 @@ RUN apt-get install -y --ignore-missing \
     xxd \
     wget \
     wifite \
-    zeek \
+    # zeek \
     bro-aux \
     zsh \
     zlib1g-dev \
@@ -170,7 +170,10 @@ RUN apt-get install -y --ignore-missing \
 ################################################################################
 # python3 pip installs
 ################################################################################
-RUN python3 -m pip install --upgrade pip 
+# RUN python3 -m pip install --upgrade pip 
+
+RUN # Uninstall urwid if it's installed by Debian
+RUN apt-get remove -y python3-urwid
 
 RUN python3 -m pip install --no-cache-dir \
     alive_progress \
@@ -218,7 +221,8 @@ RUN python3 -m pip install --no-cache-dir \
     sudo \
     unicorn \
     z3-solver \
-    xortool 
+    xortool \
+    urwid
 
 # fix angr issue by forcing pycparser installation that ignores distutils 
 RUN pip install --upgrade --ignore-installed pycparser
@@ -233,10 +237,8 @@ RUN cd /opt/ && \
     python2 get-pip.py
 
 # install python2.7 libs
-RUN pip install setuptools \
-    crypto \
+RUN pip install crypto \
     serial \
-    pwntools \
     scapy \
     ipython \
     click==5.1 \
