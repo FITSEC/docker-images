@@ -8,7 +8,7 @@ Kourtnee Fernalld, TJ OConnor, Sneha Sudhakaran, Nasheen Nur. Lightweight Sympho
 
 | Name | DockerHub |
 |------|-----------|
-| [cyber-ops](https://github.com/FITSEC/docker-images/main/cyber-ops) | [tjoconnor/cyber_ops](https://hub.docker.com/r/tjoconnor/cyber_ops)
+| [cyber-ops](https://github.com/FITSEC/docker-images/tree/main/cyber-ops) | [tjoconnor/cyber_ops](https://hub.docker.com/r/tjoconnor/cyber_ops)
 
 ## License
 
