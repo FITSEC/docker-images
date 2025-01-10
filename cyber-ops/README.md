@@ -1,5 +1,9 @@
 # Cyber-Ops Docker Container Installation
 
+The reason for using Docker containers for FITSEC activities is to give members a somewhat disposable and secure environment to play CTFs.
+
+Most issues with the cyber-ops container that cause it to be inoperable or unusable can be resolved by removing the `cyber-ops` container and recreating it with one of the `docker run` commands below.
+
 ## Install Docker on your system:
 - Linux: `Dependent on your distribution. I would not recommend installing Docker-GUI.`
 - Mac: Use the official Docker installation guide [here](https://docs.docker.com/desktop/install/mac-install/).
@@ -19,6 +23,28 @@ tjoconnor/cyber-ops   latest       3a7a1c1a9d19   9 days ago     25GB
 
 
 ## Run container:
+
+### Mount local folder into Docker Container
+- This is useful to move files in and out of the container using your host OS's file explorer.
+
+#### Windows
+
+```powershell
+docker run -v "%USERPROFILE%\Desktop\cyber-ops:/root/workspace" --cap-add=SYS_PTRACE --cap-add=SYS_ADMIN --cap-add=audit_control --security-opt seccomp=unconfined --privileged --platform linux/amd64  -ti --name=cyber-ops tjoconnor/cyber-ops:latest
+```
+
+#### Mac
+```bash
+docker run -v "~/Desktop/cyber-ops:/root/workspace" --cap-add=SYS_PTRACE --cap-add=SYS_ADMIN --cap-add=audit_control --security-opt seccomp=unconfined --privileged --platform linux/amd64  -ti --name=cyber-ops tjoconnor/cyber-ops:latest
+```
+
+#### Linux
+```bash
+docker run -v "~/Desktop/cyber-ops:/root/workspace" --cap-add=SYS_PTRACE --cap-add=SYS_ADMIN --cap-add=audit_control --security-opt seccomp=unconfined --privileged --platform linux/amd64  -ti --name=cyber-ops tjoconnor/cyber-ops:latest
+```
+
+
+### Don't mount local folder into Docker Container 
 - Run this command to create and run the container.
 ```bash
 docker run --cap-add=SYS_PTRACE --cap-add=SYS_ADMIN --cap-add=audit_control --security-opt seccomp=unconfined --privileged --platform linux/amd64  -ti --name=cyber-ops tjoconnor/cyber-ops:latest
