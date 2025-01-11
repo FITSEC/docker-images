@@ -13,12 +13,12 @@ Most issues with the cyber-ops container that cause it to be inoperable or unusa
 
 
 ## Pull image:
-- When time permits run "`docker pull tjoconnor/cyber-ops:latest`". This may take a while depending on the network speed.
+- When time permits run "`docker pull mfeliciano2021/cyber-ops:latest`". This may take a while depending on the network speed.
 - Double check that the image was installed by running "`docker images`".
 - You should see something like this:
 ```
-REPOSITORY            TAG          IMAGE ID       CREATED        SIZE
-tjoconnor/cyber-ops   latest       3a7a1c1a9d19   9 days ago     25GB
+REPOSITORY                 TAG          IMAGE ID       CREATED         SIZE
+mfeliciano2021/cyber-ops   latest       049882aab0e0   6 minutes ago   6.22GB
 ```
 
 
@@ -30,25 +30,34 @@ tjoconnor/cyber-ops   latest       3a7a1c1a9d19   9 days ago     25GB
 #### Windows
 
 ```powershell
-docker run -v "%USERPROFILE%\Desktop\cyber-ops:/root/workspace" --cap-add=SYS_PTRACE --cap-add=SYS_ADMIN --cap-add=audit_control --security-opt seccomp=unconfined --privileged --platform linux/amd64  -ti --name=cyber-ops tjoconnor/cyber-ops:latest
+docker run -v "%USERPROFILE%\Desktop\cyber-ops:/root/workspace" --cap-add=SYS_PTRACE --cap-add=SYS_ADMIN --cap-add=audit_control --security-opt seccomp=unconfined --privileged --platform linux/amd64  -ti --name=cyber-ops mfeliciano2021/cyber-ops:latest
 ```
 
 #### Mac
 ```bash
-docker run -v "~/Desktop/cyber-ops:/root/workspace" --cap-add=SYS_PTRACE --cap-add=SYS_ADMIN --cap-add=audit_control --security-opt seccomp=unconfined --privileged --platform linux/amd64  -ti --name=cyber-ops tjoconnor/cyber-ops:latest
+docker run -v "~/Desktop/cyber-ops:/root/workspace" --cap-add=SYS_PTRACE --cap-add=SYS_ADMIN --cap-add=audit_control --security-opt seccomp=unconfined --privileged --platform linux/amd64  -ti --name=cyber-ops mfeliciano2021/cyber-ops:latest
 ```
 
 #### Linux
 ```bash
-docker run -v "~/Desktop/cyber-ops:/root/workspace" --cap-add=SYS_PTRACE --cap-add=SYS_ADMIN --cap-add=audit_control --security-opt seccomp=unconfined --privileged --platform linux/amd64  -ti --name=cyber-ops tjoconnor/cyber-ops:latest
+docker run -v "~/Desktop/cyber-ops:/root/workspace" --cap-add=SYS_PTRACE --cap-add=SYS_ADMIN --cap-add=audit_control --security-opt seccomp=unconfined --privileged --platform linux/amd64  -ti --name=cyber-ops mfeliciano2021/cyber-ops:latest
 ```
 
 
 ### Don't mount local folder into Docker Container 
 - Run this command to create and run the container.
 ```bash
-docker run --cap-add=SYS_PTRACE --cap-add=SYS_ADMIN --cap-add=audit_control --security-opt seccomp=unconfined --privileged --platform linux/amd64  -ti --name=cyber-ops tjoconnor/cyber-ops:latest
+docker run --cap-add=SYS_PTRACE --cap-add=SYS_ADMIN --cap-add=audit_control --security-opt seccomp=unconfined --privileged --platform linux/amd64  -ti --name=cyber-ops mfeliciano2021/cyber-ops:latest
 ```
+
+## Fully install
+
+The image should be around 6 GB, but the whole unaltered install is around 25 GB. If you want to install the unaltered version of the cyber-ops container then run the command below. **This will take a long time**
+```bash
+/opt/install.sh
+```
+
+If you choose to use this conatiner as a base and choose to pick what packages are installed into the container then [here](https://www.kali.org/tools/kali-meta/) is some kali meta packages to look at.
 
 ## Optional
 
